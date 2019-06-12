@@ -1,13 +1,16 @@
 package com.api.linkshortner.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.Instant;
+//import java.time.ZonedDateTime;
 
+@Data
 @Entity
 @Table(name = "LINK")
 @EntityListeners({AuditingEntityListener.class})
@@ -25,11 +28,11 @@ public class Link implements Serializable {
 
     @JsonIgnore
     @CreatedDate
-    private ZonedDateTime createdDate;
+    private Instant createdDate;
 
     @JsonIgnore
     @LastModifiedDate
-    private ZonedDateTime modifiedDate;
+    private Instant modifiedDate;
 
     @JsonIgnore
     @Version
